@@ -1,7 +1,8 @@
 #Defining variables
 
-number1=10
-number2=5
+number1 = 10 
+
+number2 = 5
 
 #Performing basic operations
 

@@ -7,6 +7,7 @@ row= 0
 #Draw the square pattern
 
 while row < pattern_size:
+  
   for col in range(pattern_size):
     print("*", end="")
   print()

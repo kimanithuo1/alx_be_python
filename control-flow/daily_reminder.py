@@ -1,24 +1,16 @@
-#Input task description
+#input task and priority
 
-task = input("Enter the task description: ")
+task = input("Enter your task: ")
+priority = input("Priority (high/medium/low): ").lower()
+time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-#Ask if its time bound
-time_bound = input("Is the task time-bound? (yes/no): ").lower()
-
-#Input task priority
-
-priority = input("Enter the task priority (high, medium, low): ").lower()
-
-
-#match case priority
-
+#Providing daily reminders
 match priority:
     case "high":
         if time_bound == "yes":
             print(f"Reminder: '{task}' is a high priority task that requires immediate attention today!")
         else:
             print(f"Reminder: '{task}' is a high priority task. Try to complete it soon.")
-   
     case "medium":
         if time_bound == "yes":
             print(f"Reminder: '{task}' is a medium priority task that needs to be done today.")

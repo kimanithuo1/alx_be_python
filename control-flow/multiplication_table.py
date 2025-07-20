@@ -2,5 +2,6 @@
 
 number = int(input("Enter a number to see its multiplication table: "))
 
+#Print the multiplication table
 for y in range(1, 11):
     print(f"The multiplication table of {number} and {y} is: {number} x {y} = {number * y}")

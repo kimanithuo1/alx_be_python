@@ -27,5 +27,5 @@ class Book:
 
     def __del__(self):
         # Triggered when a book instance is deleted
-        print(f"Deleting '{self.title}'")
+        print(f"Deleting {self.title}")
               

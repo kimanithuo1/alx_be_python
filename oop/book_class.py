@@ -23,7 +23,7 @@ class Book:
     def __repr__(self):
         # official string representation of the book
         
-        return f"Book('{self.title}','{self.author}',{self.year})"
+        return f"Book('{self.title}', '{self.author}', {self.year})"
 
     def __del__(self):
         # Triggered when a book instance is deleted

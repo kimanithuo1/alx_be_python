@@ -1,33 +1,43 @@
 class Book:
-    total_books = 0
-
-    def __init__(self, title, author, year):
+    def __init__(self, title: str, author: str):
         self.title = title
         self.author = author
-        self.year = year
-        Book.total_books += 1
-
-    @classmethod
-    def display_total_books(cls):
-        return f"Total books: {cls.total_books}"
 
     def __str__(self):
-        return f"'{self.title}' by {self.author} ({self.year})"
-
-
-class PrintBook(Book):
-    def __init__(self, title, author, year, pages):
-        super().__init__(title, author, year)
-        self.pages = pages
-
-    def __str__(self):
-        return f"Print Book: '{self.title}' by {self.author} ({self.year}), {self.pages} pages"
+        return f"'{self.title}' by {self.author}"
 
 
 class EBook(Book):
-    def __init__(self, title, author, year, file_size):
-        super().__init__(title, author, year)
-        self.file_size = file_size
+    def __init__(self, title: str, author: str, file_size: int):
+        super().__init__(title, author)  # Call base class constructor
+        self.file_size = file_size  # in MB
 
     def __str__(self):
-        return f"E-Book: '{self.title}' by {self.author} ({self.year}), {self.file_size}MB"
+        return f"{super().__str__()} [EBook, File Size: {self.file_size}MB]"
+
+
+class PrintBook(Book):
+    def __init__(self, title: str, author: str, page_count: int):
+        super().__init__(title, author)  # Call base class constructor
+        self.page_count = page_count  # number of pages
+
+    def __str__(self):
+        return f"{super().__str__()} [PrintBook, Pages: {self.page_count}]"
+
+
+class Library:
+    def __init__(self):
+        self.books = []  # store Book, EBook, and PrintBook instances
+
+    def add_book(self, book: Book):
+        if isinstance(book, Book):
+            self.books.append(book)
+        else:
+            print("Only Book, EBook, or PrintBook instances can be added.")
+
+    def list_books(self):
+        if not self.books:
+            print("The library is empty.")
+        else:
+            for idx, book in enumerate(self.books, start=1):
+                print(f"{idx}. {book}")

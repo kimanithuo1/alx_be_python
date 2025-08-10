@@ -15,12 +15,12 @@ class Book:
         self.author = author
         self.year = year
 
-    def __str__(self) -> str:
+    def __str__(self):
         # Human-readable string representation of the book used by print()
         
         return f"{self.title} by {self.author}, published in {self.year}"
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         # official string representation of the book
         
         return f"Book('{self.title}', '{self.author}', {self.year})"

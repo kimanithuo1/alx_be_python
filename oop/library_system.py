@@ -1,38 +1,33 @@
 class Book:
-    def __init__(self, title: str, author: str):
+    total_books = 0
+
+    def __init__(self, title, author, year):
         self.title = title
         self.author = author
+        self.year = year
+        Book.total_books += 1
 
+    @classmethod
+    def display_total_books(cls):
+        return f"Total books: {cls.total_books}"
 
-class EBook(Book):
-    def __init__(self, title: str, author: str, file_size: int):
-        super().__init__(title, author)  # call Book.__init__
-        self.file_size = file_size  # in KB
+    def __str__(self):
+        return f"'{self.title}' by {self.author} ({self.year})"
 
 
 class PrintBook(Book):
-    def __init__(self, title: str, author: str, page_count: int):
-        super().__init__(title, author)
-        self.page_count = page_count
+    def __init__(self, title, author, year, pages):
+        super().__init__(title, author, year)
+        self.pages = pages
+
+    def __str__(self):
+        return f"Print Book: '{self.title}' by {self.author} ({self.year}), {self.pages} pages"
 
 
-class Library:
-    def __init__(self):
-        # Initialize an empty list to hold Book / EBook / PrintBook instances
-        self.books = []
+class EBook(Book):
+    def __init__(self, title, author, year, file_size):
+        super().__init__(title, author, year)
+        self.file_size = file_size
 
-    def add_book(self, book):
-        # Optionally check type
-        if not isinstance(book, Book):
-            raise TypeError("Only Book (or subclasses) instances can be added to the Library")
-        self.books.append(book)
-
-    def list_books(self):
-        # Print details for each stored book
-        for book in self.books:
-            if isinstance(book, EBook):
-                print(f"EBook: {book.title} by {book.author}, File Size: {book.file_size}KB")
-            elif isinstance(book, PrintBook):
-                print(f"PrintBook: {book.title} by {book.author}, Page Count: {book.page_count}")
-            else:
-                print(f"Book: {book.title} by {book.author}")
+    def __str__(self):
+        return f"E-Book: '{self.title}' by {self.author} ({self.year}), {self.file_size}MB"
